@@ -1,0 +1,38 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": "Number of Hotel Reviews Per European Country",
+    "width": 800,
+    "height": 600,
+    "projection": {"type": "equirectangular"},
+    "data": {
+        "url": "js/europe.geo.topojson",
+        "format": {
+            "type": "topojson", 
+            "feature": "custom.geo"
+        }
+    },
+    "transform": [
+    {
+        "lookup": "properties.NAME",
+        "from": {
+            "data": {
+                "url": "data/hotel_reviews.csv"
+            },
+            "key": "Hotel_Country",
+            "fields": ["Active"]
+            }
+        }
+    ],
+    "mark": {"type": "geoshape"},
+        "encoding": {
+            "color": {
+                "field": "Active Cases",
+                "type": "quantitative",
+                "scale": {"type": "log"}
+            },
+            "tooltip": [
+                {"field": "properties.NAME", "type": "nominal", "title": "Hotel_Country"},
+                {"field": "Active", "type": "quantitative"}
+            ]
+        }
+   }

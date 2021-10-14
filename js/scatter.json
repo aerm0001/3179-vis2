@@ -1,0 +1,31 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "A scatterplot showing horsepower and miles per gallons that opens a Google search for the car that you click on.",
+  "data": {"url": "https://raw.githubusercontent.com/aerm0001/3179-vis2/main/data/standardised_word.csv"},
+  "mark": {
+    "type": "point",
+    "size": 80},
+  "height": 290,
+  "width": 300,
+  "params": [{
+    "name": "get_point",
+    "select": {"type": "point", "fields": ["Country"]},
+    "bind": "legend"
+  }],
+  "encoding": {
+    "x": {"field": "Standardised_Negative", "type": "quantitative", "title": "Average Negative Words"},
+    "y": {"field": "Standardised_Positive", "type": "quantitative", "title": "Average Positive Words"},
+    "color": {"field": "Country", 
+              "type": "nominal",
+              "legend": {"columns": 2}},
+    "tooltip": [
+      {"field": "Country", "type": "nominal", "title": "Country"},
+      {"field": "Standardised_Positive", "type": "quantitative", "title": "Average Positive Words", "format": ".2f"},
+      {"field": "Standardised_Negative", "type": "quantitative", "title": "Average Negative Words", "format": ".2f"}
+    ],
+    "opacity": {
+      "condition": {"param": "get_point", "value": 1},
+      "value": 0.1
+    }
+  }
+}

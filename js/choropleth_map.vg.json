@@ -1,37 +1,46 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "title": "Number of Hotel Reviews Per European Country",
-    "width": 500,
-    "height": 600,
-    "projection": {"type": "mercator", "scale": 800, "center": [3, 47]},
-    "data": {
-        "url": "https://raw.githubusercontent.com/aerm0001/3179-vis2/main/js/europe.geo.json",
-        "format": {
-            "type": "topojson", 
-            "feature": "europe.geo"
-        }
-    },
-    "transform": [{
-        "lookup": "properties.name",
-        "from": {
-            "data": {
-                "url": "https://raw.githubusercontent.com/aerm0001/3179-vis2/main/data/hotel_reviews_count.csv"
-            },
-            "key": "Country",
-            "fields": ["Count"]
+    "width": 425,
+    "height": 465,
+    "projection": {"type": "mercator", "scale": 750, "center": [4, 48.5]},
+    "layer": [{
+        "data": {
+            "url": "https://raw.githubusercontent.com/aerm0001/3179-vis2/main/js/europe.geo.json",
+            "format": {
+                "type": "topojson", 
+                "feature": "europe.geo"
+            }
+        },
+        "transform": [{
+            "lookup": "properties.name",
+            "from": {
+                "data": {
+                    "url": "https://raw.githubusercontent.com/aerm0001/3179-vis2/main/data/hotel_reviews_count.csv"
+                },
+                "key": "Country",
+                "fields": ["Count"]
+                }
+            }
+            ],
+        "mark": {"type": "geoshape", "stroke": "black"},
+            "encoding": {
+                "color": {
+                    "field": "Count",
+                    "type": "quantitative",
+                    "scale": {"type": "log", "scheme": "blues"},
+                    "legend": {
+                        "orient": "none",
+                        "direction": "vertical",
+                        "legendX": 360,
+                        "legendY": 10,
+                        "title": null
+                      }
+                },
+                "tooltip": [
+                    {"field": "properties.name", "type": "nominal", "title": "Country"},
+                    {"field": "Count", "type": "quantitative", "title": "Number of reviews"}
+                ]
             }
         }
-        ],
-    "mark": {"type": "geoshape", "stroke": "black"},
-        "encoding": {
-            "color": {
-                "field": "Count",
-                "type": "quantitative",
-                "scale": {"type": "log"}
-            },
-            "tooltip": [
-                {"field": "properties.name", "type": "nominal", "title": "Country"},
-                {"field": "Count", "type": "quantitative"}
-            ]
-        }
-   }
+    ]
+}

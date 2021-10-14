@@ -1,0 +1,35 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "values": [
+      {"Country": "Netherlands", "Review": 7.83, "img": "images/netherlands.png"},
+      {"Country": "France", "Review": 8.39, "img": "images/france.png"},
+      {"Country": "United Kingdom", "Review": 8.39, "img": "images/uk.png"},
+      {"Country": "Austria", "Review": 8.41, "img": "images/austria.png"},
+      {"Country": "Italy", "Review": 8.41, "img": "images/italy.png"},
+      {"Country": "Spain", "Review": 8.39, "img": "images/spain.png"}
+    ]
+  },
+  "width": 250,
+  "height": 200,
+  "mark": {"type": "image", "width": 30, "height": 30},
+  "encoding": {
+    "x": {
+      "aggregate": "mean",
+      "axis": {
+        "labelExpr": "datum.label == 7.5 ? '7.5' : datum.label == 8 ? '8' : '8.5'",
+        "labelFlush": false,
+        "values": [7.5, 8, 8.5]
+      },
+      "field": "Review",
+      "scale": {"domain": [7.5, 8.5]},
+      "title": null
+    },
+    "y": {"field": "Country", "sort": "x", "title": null},
+    "url": {"field": "img", "type": "nominal"},
+    "tooltip": [
+        {"field": "Country", "type": "nominal"},
+        {"field": "Review", "title": "Average rating", "type": "quantitative", "format": ","}
+    ]
+  }
+}

@@ -1,27 +1,142 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <title>Hotel Reviews in Europe | By Alina Ermolaeva</title>
   <!-- Import Vega & Vega-Lite (does not have to be from CDN) -->
   <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
-  
+
+  <!-- Import pure.css -->
+  <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css" integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Google fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,300;0,700;1,900&display=swap" rel="stylesheet">
+
   <!-- CSS file -->
   <link rel="stylesheet" type="text/css" href="css/styles.css" media="all">
-
-
 </head>
 <body>
-  
-<div id="choropleth_map"></div>
 
+ <div class="page">
+
+   <!-- pure grid group -->
+    <div class="pure-g" style="margin-bottom: 30px;">
+      <img src="images/flying_plane.jpeg" style="height: 110px;">
+      <div class="pure-u-1-3" style="padding: 0 5px 0 20px; font-family: 'Raleway', sans-serif; font-weight: 300; font-style: italic">
+        <h1>Most Popular Hotel Booking Destinations in Europe</h1>
+      </div>
+      <div class="pure-u-3-5" style="font-family: 'Raleway', sans-serif; text-align:justify">
+        <p>An exploration of the countries with the best and worst hotel reviews within the continent. This visualisation
+          can help make up your mind about what country that you could travel to next as we expose the hotel ratings and
+          compare some travel options. This visualisation also highlights where the majority of those countries residents
+          travel to within Europe as well.
+        </p>
+      </div>
+      
+    </div>
+  <!-- end pure grid group -->
+
+    <!-- pure grid group -->
+    <div class="pure-g" >
+        <div class="pure-u-2-5">
+          <p style="font-family: 'Raleway', sans-serif; font-weight: 500; margin-left: 10px;">Number of Hotel Reviews Per Chosen European Country</p>
+          <div id="vis1" class="vis1-container"></div>
+        </div>
+
+        <div class="pure-u-1-6">
+          <p style="font-family: 'Raleway', sans-serif; font-size: 14px; padding: 40px 30px 0 0; text-align:justify">The map on the left illustrates the number of hotel reviews recorded
+          for five countries in Europe being the Netherlands, Spain, Italy, France, Austria and United Kingdom. <br><br> Darker blue depicts that there is a greater
+        number of reviews compared to the lighter blue, hence, we can see that United Kingdom has the most hotel reviews compared to other countries in 
+      the dataset. Conversely, Italy has the least number of reviews in this case. <br> <br> 
+
+      This can be a good indicator of where travellers within Europe tend to stay, allowing us to analyse the best and worst average hotel ratings for the countries within this dataset.</p>
+        </div>
+        <img src="images/line.png" style="height: 550px;">
+
+        <div class="pure-u-3-8" >
+          <p style="font-family: 'Raleway', sans-serif; font-weight: 500; margin-left: 70px;">Average hotel ratings per country (out of 10)</p>
+          <div id="vis2" class="vis2-container"></div>
+          <p style="padding: 20px; font-family: 'Raleway', sans-serif; font-size: 14px; text-align:justify; padding: 0 0 0 50px;"> The plot above depicts the average hotel ratings for each of the chosen European countries on a scale from 0 to 10.
+          Keep in mind that the x-axis here is only between 7.5 and 8.5. <br><br>
+          It is evident that all countries have a good average rating with all of them being over 7.5, however, the Netherlands has the lowest rating compared to France, United Kingdom, Spain, Austria and Italy. We can see
+          that the rest of the countries seem tied, but Italy and Austria have a higher rating by a marginal value. <br> <br>
+          All these values being close together indicate that on average hotel ratings are quite high amongst the European countries being analysed here.</p>
+        </div>
+    </div>
+    <!-- end pure grid group -->
+
+    <!-- pure grid group -->
+    <div class="pure-g" style="margin-top: 50px;">
+      <div class="pure-u-1-2">
+        <p style="font-family: 'Raleway', sans-serif; font-weight: 500; margin-left: 50px;">Average Number of Positive vs Negative Words Used in A Review</p>
+        <div id="vis4" class="vis4-container"></div>
+      </div>
+      <div class="pure-u-1-5">
+        <p style="font-family: 'Raleway', sans-serif; font-size: 14px; text-align:justify; margin-top:40px;">The plot on the left hand side depicts the number of average positive words used in a hotel review against average negative words used for a chosen
+        set of European countries. There seems to be a positive correlation between the two variables, however, we can see some potential outliers where countries such as Georgia, Monaco, Belarus and Bosnia steer away from the main points of data.
+        <br> <br> On average, the data points are around the 20 positive/negative words per review, where more populate destinations are on more on the top right hand side of the plot, whilst the less popular destinations are on the bottom left hand side.</p>
+      </div> 
+      <div class="pure-u-1-5">
+        <img src="images/world_plane.jpeg" style="width: 400px;">
+      </div>
+    </div>
+    <!-- end pure grid group -->
+    
+
+    <div class="pure-g" style="margin-top: 0px;">
+      <div class="pure-u-1-2">
+        <p style="margin-top: 80px; font-family: 'Raleway', sans-serif; font-size: 14px; text-align:justify; padding-right: 40px;">The flow of travellers between France, Austria, Italy, the Netherlands and United Kingdom can be seen in the diagram on the right. It is obvious that
+        the most number of reviews were conducted by travellers from the United Kingdom, with approximately a smaller equal distribution to the rest of the countries listed. Other countries had a far smaller number of travellers and reviews in this data set and this could indicate that
+      this data set may have been prominently collected in the UK.
+    
+      <br><br> 
+      From the figures below, each representing 10,000 people that have conducted a hotel review. We can infer that this large data set gives us a good estimation of the review/travel behaviours that are common to Europe.</p>
+        <div style="margin-bottom: 10px;" id="vis5" class="vis1-container"></div>
+        <img src="images/another_line.png" style="width: 500px; height: 110px; margin-left: 50px;">
+      </div>
+      <div class="pure-u-1-2"> 
+        <div id="vis3" class="vis3-container"></div>
+      </div>
+    </div>
+    
+    <div class="pure-g">
+      <div class="pure-u-1-1 small-font">
+        <p style="font-family: 'Raleway', sans-serif; float: right;">This visualisation is created by <a href="https://github.com/aerm0001" target="_blank">Alina Ermolaeva</a>. The datasource is <a href="https://www.kaggle.com/jessemostipak/hotel-booking-demand" target="_blank">found via the link here.</href></p>
+      </div>
+    </div>
+
+  </div> <!-- end page -->
+   
 <script type="text/javascript">
+  var specVis1 = "js/choropleth_map.vg.json";
+  var specVis2= "js/strip_plot.json";
+  var specVis3= "js/sankey.json";
+  var specVis4= "js/scatter.json";
+  var specVis5= "js/isotype.json";
 
-  var spec2 = "js/choropleth_map.vg.json";
-  vegaEmbed('#choropleth_map', spec2).then(function(result) {
+  vegaEmbed('#vis1', specVis1, {"actions": false}).then(function(result) {
     // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
   }).catch(console.error);
-</script>
+  
+   vegaEmbed('#vis2', specVis2, {"actions": false}).then(function(result) {
+    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+  }).catch(console.error);
 
+  vegaEmbed('#vis3', specVis3, {"actions": false}).then(function(result) {
+    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+  }).catch(console.error);
+
+  vegaEmbed('#vis4', specVis4, {"actions": false}).then(function(result) {
+    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+  }).catch(console.error);
+
+  vegaEmbed('#vis5', specVis5, {"actions": false}).then(function(result) {
+    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+  }).catch(console.error);
+
+</script>
 </body>
 </html>

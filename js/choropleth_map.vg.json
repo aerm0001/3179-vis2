@@ -2,8 +2,28 @@
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "width": 425,
     "height": 465,
-    "projection": {"type": "mercator", "scale": 750, "center": [4, 48.5]},
-    "layer": [{
+    "projection": {"type": "mercator", "scale": 650, "center": [4, 48.5]},
+    "layer": [
+        {
+        "data": {
+            "url": "https://raw.githubusercontent.com/aerm0001/3179-vis2/main/js/europe.geo.json",
+            "format": {
+                "type": "topojson", 
+                "feature": "europe.geo"
+            }
+        },
+        "mark": {"type": "geoshape", "stroke": "black"},
+        "encoding": {
+            "color": {
+                "field": "admin",
+                "type": "nominal",
+                "legend": null,
+                "scale": {"type": "log", "scheme": "greys"}
+            }
+        }
+
+        },
+        {
         "data": {
             "url": "https://raw.githubusercontent.com/aerm0001/3179-vis2/main/js/europe.geo.json",
             "format": {
@@ -31,7 +51,7 @@
                     "legend": {
                         "orient": "none",
                         "direction": "vertical",
-                        "legendX": 360,
+                        "legendX": 5,
                         "legendY": 10,
                         "title": null
                       }

@@ -454,7 +454,7 @@
         "encode": {
           "enter": {
             "stroke": {
-              "value": "rgb(157, 199, 224)"
+              "value": "rgb(59, 139, 204)"
             },
             "strokeWidth": {
               "value": 1
@@ -490,10 +490,10 @@
             "stroke": [
               {
                 "test": "groupSelector && groupSelector.stack=='stk1'",
-                "value": "rgb(250, 250, 224)"
+                "value": "rgb(59, 139, 204)"
               },
               {
-                "value": "rgb(157, 199, 224)"
+                "value": "rgb(59, 91, 204)"
               }
             ],
             "strokeWidth": {
@@ -528,7 +528,7 @@
         "encode": {
           "enter": {
             "fill": {
-              "value": "rgb(157, 199, 224)"
+              "value": "rgb(59, 91, 204)"
             },
             "width": {
               "scale": "x",
@@ -555,7 +555,7 @@
           },
           "hover": {
             "fillOpacity": {
-              "value": 1
+              "value": 0.4
             }
           }
         }
@@ -634,10 +634,10 @@
                   "value": 6
                 },
                 "fill": {
-                  "value": "rgb(157, 199, 224)"
+                  "value": "rgb(59, 139, 204)"
                 },
                 "stroke": {
-                  "value": "rgb(157, 199, 224)"
+                  "value": "rgb(59, 139, 204)"
                 },
                 "strokeWidth": {
                   "value": 2

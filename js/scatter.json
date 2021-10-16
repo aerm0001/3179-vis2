@@ -13,8 +13,8 @@
     "bind": "legend"
   }],
   "encoding": {
-    "x": {"field": "Standardised_Negative", "type": "quantitative", "title": "Average Negative Words"},
-    "y": {"field": "Standardised_Positive", "type": "quantitative", "title": "Average Positive Words"},
+    "x": {"field": "Standardised_Negative", "type": "quantitative", "title": "Average Negative Words", "scale": {"domain": [10, 26]}},
+    "y": {"field": "Standardised_Positive", "type": "quantitative", "title": "Average Positive Words", "scale": {"domain": [10, 26]}},
     "color": {"field": "Country", 
               "type": "nominal",
               "legend": {"columns": 2}},
